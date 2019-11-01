@@ -1,9 +1,11 @@
 package id.ac.polinema.recyclerviewsangatsederhana.adapters;
 
+import android.app.Application;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,7 +20,7 @@ import id.ac.polinema.recyclerviewsangatsederhana.models.SuperHero;
 public class SuperHeroAdapter extends RecyclerView.Adapter<SuperHeroAdapter.MyViewFolder> {
     List<SuperHero> heroList;
 
-    public SuperHeroAdapter(List<SuperHero> heroList) {
+    public SuperHeroAdapter(Application application, List<SuperHero> heroList) {
         this.heroList = heroList;
     }
 
@@ -35,7 +37,9 @@ public class SuperHeroAdapter extends RecyclerView.Adapter<SuperHeroAdapter.MyVi
     @Override
     public void onBindViewHolder(@NonNull SuperHeroAdapter.MyViewFolder holder, int position) {
         SuperHero hero = heroList.get(position);
+        int rgambar = hero.getGambar();
         holder.heroName.setText(hero.getHeroName());
+        holder.gambar.setImageResource(rgambar);
     }
 
     @Override
@@ -45,9 +49,11 @@ public class SuperHeroAdapter extends RecyclerView.Adapter<SuperHeroAdapter.MyVi
 
     public class MyViewFolder extends RecyclerView.ViewHolder {
         public TextView heroName;
-        public MyViewFolder(@NonNull View itemView) {
+        public ImageView gambar;
+        public MyViewFolder(View itemView) {
             super(itemView);
             heroName = itemView.findViewById(R.id.heroName);
+            gambar = itemView.findViewById(R.id.gambar);
         }
     }
 }

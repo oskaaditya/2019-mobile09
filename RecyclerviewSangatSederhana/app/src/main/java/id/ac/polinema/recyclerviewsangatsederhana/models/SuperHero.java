@@ -3,10 +3,14 @@ package id.ac.polinema.recyclerviewsangatsederhana.models;
 public class SuperHero
 {
     public String heroName;
+    public int gambar;
 
-    public SuperHero(String heroName)
+
+
+    public SuperHero(String heroName, int gambar)
     {
         this.heroName = heroName;
+        this.gambar = gambar;
     }
 
     public String getHeroName() {
@@ -15,5 +19,13 @@ public class SuperHero
 
     public void setHeroName(String heroName) {
         this.heroName = heroName;
+    }
+
+    public int getGambar() {
+        return gambar;
+    }
+
+    public void setGambar(int gambar) {
+        this.gambar = gambar;
     }
 }

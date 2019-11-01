@@ -1,6 +1,7 @@
 package id.ac.polinema.recyclerviewsangatsederhana;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,12 +22,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         rvSuperHero = findViewById(R.id.rvSuperHero);
-        SuperHero hero = new SuperHero("Petruk");
-        listSuperHero.add(hero);
-        hero = new SuperHero("Gareng");
-        listSuperHero.add(hero);
-        SuperHeroAdapter superHeroAdapter = new SuperHeroAdapter(listSuperHero);
+//        SuperHero hero = new SuperHero("Petruk");
+//        listSuperHero.add(hero);
+//        hero = new SuperHero("Gareng");
+//        listSuperHero.add(hero);
+//        SuperHeroAdapter superHeroAdapter = new SuperHeroAdapter(listSuperHero);
+//        rvSuperHero.setAdapter(superHeroAdapter);
+//        rvSuperHero.setLayoutManager(new LinearLayoutManager(this));
+
+        for (int i=0;i<=16;i++){
+            listSuperHero.add(new SuperHero("Bagong",R.drawable.bagong));
+            listSuperHero.add(new SuperHero("Gareng",R.drawable.gareng));
+            listSuperHero.add(new SuperHero("Petruk",R.drawable.petruk));
+        }
+        SuperHeroAdapter superHeroAdapter = new SuperHeroAdapter(getApplication(),listSuperHero);
         rvSuperHero.setAdapter(superHeroAdapter);
-        rvSuperHero.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2, LinearLayoutManager.HORIZONTAL, false);
+        rvSuperHero.setLayoutManager(layoutManager);
     }
 }
